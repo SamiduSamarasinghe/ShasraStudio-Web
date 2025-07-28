@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wedding Booking</title>
+        <link rel="stylesheet" type="text/css" href="weddingstyle.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    </head>
+    <body>
+        <div id="divv1">
+            <header>
+                <div id="h-black">
+                    <nav id="g-nav1">
+                        <ul>
+                            <li><a href="../home/home_logged.html" id="navA">Home</a></li>
+                            <li><a href="../gallery/gallery.html" id="navA">Gallery</a></li>
+                            <li><a href="../shop/shop.html" id="navA">Shop</a></li>
+                            <li><a href="service.html" id="navA">Services</a></li>
+                            <li><a href="../about_us/about.html" id="navA">About Us</a></li>
+                            <li><a href="../contact/index.html" id="navA">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <hr id="g-hr1" />
+                </div>
+            </header>
+        </div>
+        <div id="help">
+            <p id="pp1">Wedding Photography</p>
+            <p id="pp2">
+                For Booking & Orders:<br>
+                0114 410 026<br>
+                sahasrastudio@gmail.com<br>
+                Monday-Sunday: 8.30AM - 8.00PM
+            </p>
+            <div id="form">
+                <h2>Add Booking</h2>
+                <form id="booking-form">
+                    <label>Full Name:</label><input type="text" id="name" name="name" placeholder="Enter Your Full Name..." required><br>
+                    <label>Event Type:</label><input type="text" id="event" name="event" placeholder="What Is Your Event..." required><br>
+                    <label>Location:</label><input type="text" id="location" name="location" placeholder="Enter Event Location..." required><br>
+                    <label>Date & Time:</label><input type="datetime-local" id="time" name="time" placeholder="Enter Event Time & Date..." required><br>
+                    <label>Crowd Quantity:</label><input type="number" id="crowd" name="crowd" placeholder="Enter Crowd Quantity..." required><br>
+                    <label>Photography Type:</label><input type="text" id="service" name="service" placeholder="Enter Photography Type..." required><br>
+                    <label>Expected Cost:</label><input type="text" id="cost" name="cost" placeholder="Enter Your Expected Cost..." required><br>
+                    <label>Special Requirements:</label><input type="text" id="others" name="others" placeholder="Enter Your Requirements..."><br><br><br>
+                    <label for="inquiry">About Event:</label>
+                    <pre>
+                        <textarea id="description" name="description" cols="80" rows="10">Type Here...</textarea>
+                    </pre>
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </form>
+                <p id="error-message" style="color: rgb(245, 101, 101);"></p>
+            </div>
+        </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <footer id="h-f1">
+            <div class="boder-line">
+                <hr class="line" />
+            </div>
+            <h3 id="h-f1h3">Follow Us</h3>
+            <a href="https://www.facebook.com/sahasrastudiolk" target="_blank" class="fa fa-facebook"><img src="./fblogo.png" alt="fblogo" /></a>
+            <a href="https://www.instagram.com/sahasrastudiolk" class="fa fa-instagram" target="_blank"><img src="./iglogo.png" alt="iglogo" /></a>
+            <a href="#" class="fa fa-twitter" target="_blank"><img src="./twlogo.png" alt="twlogo" /></a>
+            <a href="#" class="fa fa-linkedin" target="_blank"><img src="./linklogo.png" alt="linklogo" /></a>
+            <pre id="h-pre1">Address: 456/5B, "Sahasra Studio" Arangla, Malabe, Sri Lanka</pre>
+            <pre id="h-pre2">Contact-us: 0114 410 026</pre>
+        </footer>
+
+        <script>
+            $(document).ready(function () {
+                $('#booking-form').on('submit', function (e) {
+                    e.preventDefault();
+                    var name = $('#name').val();
+                    var event = $('#event').val();
+                    var location = $('#location').val();
+                    var time = $('#time').val();
+                    var crowd = $('#crowd').val();
+                    var service = $('#service').val();
+                    var cost = $('#cost').val();
+                    var others = $('#others').val();
+                    var description = $('#description').val();
+                    var errorMessage = $('#error-message');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '../book_wedding.php',
+                        data: {
+                            name: name,
+                            event: event,
+                            location: location,
+                            time: time,
+                            crowd: crowd,
+                            service: service,
+                            cost: cost,
+                            others: others,
+                            description: description
+                        },
+                        success: function (response) {
+                            if (response === 'Booking successful!') {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Booking successful!',
+                                    icon: 'success',
+                                    confirmButtonText: 'OK'
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: response,
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                });
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

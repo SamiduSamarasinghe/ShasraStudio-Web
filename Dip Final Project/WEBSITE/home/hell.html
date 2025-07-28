@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Studio Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-header {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        .card h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Photography Studio Dashboard</h1>
+    </header>
+    <div class="container">
+        <section class="section">
+            <h2 class="section-header"></h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h2>Gallery 1</h2>
+                    <p>Description of Gallery 1</p>
+                </div>
+                <div class="card">
+                    <h2>Gallery 2</h2>
+                    <p>Description of Gallery 2</p>
+                </div>
+                <!-- Add more galleries here -->
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-header"></h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h2>Booking 1</h2>
+                    <p>Description of Booking 1</p>
+                </div>
+                <div class="card">
+                    <h2>Booking 2</h2>
+                    <p>Description of Booking 2</p>
+                </div>
+                <!-- Add more bookings here -->
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-header">Account Settings</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h2>Profile</h2>
+                    <p>View and edit your profile</p>
+                </div>
+                <div class="card">
+                    <h2>Change Password</h2>
+                    <p>Change your account password</p>
+                </div>
+                <!-- Add more account settings here -->
+            </div>
+        </section>
+    </div>
+</body>
+</html>

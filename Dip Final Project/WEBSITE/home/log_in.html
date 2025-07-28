@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="loginstyle.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Bebas+Neue&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div id="divv1">
+            <header>
+                <div id="h-black">
+                    <nav id="g-nav1">
+                        <ul>
+                            <li><a href="../home/home.html" id="navA">Home</a></li>
+                            <li><a href="../gallery/gallery.html" id="navA">Gallery</a></li>
+                            <li><a href="../shop/shop.html" id="navA">Shop</a></li>
+                            <li><a href="../service_page/service.html" id="navA">Services</a></li>
+                            <li><a href="../about_us/about.html" id="navA">About Us</a></li>
+                            <li><a href="../contact/index.html" id="navA">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <hr id="g-hr1" />
+                </div>
+            </header>
+        </div>
+        <div id="help">
+            <pre id="pp1"><i>Sahasra Studio</i></pre>
+            <p id="pp2">
+                For Booking & Orders:<br>
+                0114 410 026<br>
+                sahasrastudio@gmail.com<br>
+                Monday-Sunday: 8.30AM - 8.00PM
+            </p>
+            <form id="form"><br>
+                <h2>L O G I N</h2><br><br>
+                <label>Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter Your Username..." required><br><br>
+                <label>Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter Your Password..." required><br><br><br>
+                <button type="submit" id="l-b1">Login</button><br><br>
+                <button type="button" id="l-b2">Forgot Password</button><br><br>
+                <p id="error-message" style="color: red;"></p>
+            </form>
+        </div>
+        <footer id="h-f1">
+            <div class="boder-line">
+                <hr class="line" />
+            </div>
+            <h3 id="h-f1h3">Follow Us</h3>
+            <a href="https://www.facebook.com/sahasrastudiolk" target="_blank" class="fa fa-facebook">
+                <img src="./fblogo.png" alt="fblogo"/>
+            </a>
+            <a href="https://www.instagram.com/sahasrastudiolk" class="fa fa-instagram" target="_blank">
+                <img src="./iglogo.png" alt="iglogo"/>
+            </a>
+            <a href="#" class="fa fa-twitter" target="_blank">
+                <img src="./twlogo.png" alt="twlogo"/>
+            </a>
+            <a href="#" class="fa fa-linkedin" target="_blank">
+                <img src="./linklogo.png" alt="linklogo"/>
+            </a>
+            <pre id="h-pre1">Address: 456/5B, "Sahasra Studio" Arangla, Malabe, Sri Lanka</pre>
+            <pre id="h-pre2">Contact-us: 0114 410 026</pre>
+        </footer>
+
+        
+        <script>
+            $(document).ready(function () {
+                $('#form').on('submit', function (e) {
+                    e.preventDefault();
+                    var username = $('#username').val();
+                    var password = $('#password').val();
+                    var errorMessage = $('#error-message');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '../login.php',
+                        data: { username: username, password: password },
+                        success: function (response) {
+                            if (response === 'success') {
+                                window.location.href = 'home_logged.html';
+                            } else {
+                                errorMessage.text(response);
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

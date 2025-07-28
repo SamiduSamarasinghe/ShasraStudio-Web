@@ -1,0 +1,198 @@
+#g-nav1 {
+  text-align: center; /* Center align the navigation items */
+}
+
+li {
+  display: inline-block; /* Change display to inline-block */
+  padding: 15px 0;
+  position: relative;
+}
+
+
+#navA {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+body {
+  background-color: black;
+}
+#navA:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.6s ease 0s, left 0.6s ease 0s;
+  width: 0;
+}
+
+#navA:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+@media screen and (max-height: 300px) {
+  ul {
+    margin-top: 40px;
+  }
+}
+#g-hr1 {
+  border-color: red;
+}
+
+#g-h1 {
+  color: aliceblue;
+  font-size: 50px;
+  text-align: center;
+  
+}
+
+div.gallery {
+  margin: 50px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 400px;
+  border-radius: 3%;
+  display: flex;
+  /* Make sure the container takes up the full height of the viewport */
+  flex-direction: column;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+  
+  
+}
+
+div.gallery img {
+  width: 100%;
+  height: 100%;
+  border-radius: 3%;
+}
+div.desc {
+  padding: 15px;
+  text-align: center;
+  color: aliceblue;
+  font-family: "Kanit", sans-serif;
+  font-weight: 700;
+  font-style: normal
+}
+
+#footer {
+  background-color: black;
+   /* Set the background color for the footer */
+}
+
+/* Adjust other styles as needed */
+#h-f1 {
+  width: 100%;
+  background-color: black;
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 55px;
+  z-index: 999;
+  position: fixed; /* Keep the footer fixed at the bottom */
+  bottom: 0; /* Align the footer to the bottom */
+  left: 0; /* Align the footer to the left */
+  right: 0;
+}
+
+#h-f1::before {
+  display: inline-block;
+  content: "";
+  border-top: 0.3rem solid black;
+  width: 4rem;
+  margin: 0 1rem;
+  
+}
+
+#h-f1h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 25px;
+  color: aliceblue;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+#h-pre1 {
+  text-align: left;
+  font-size: 19px;
+  margin-left: -175px;
+  margin-top: -90px;
+  color: aliceblue;
+}
+.line {
+  border-style: inset;
+  border-width: 1px;
+  border-color: red;
+}
+
+/* #h-hr2 {
+    border-color: red;
+} */
+
+#h-pre2 {
+  text-align: right;
+  font-size: 20px;
+  margin-right: 30px;
+  margin-top: -50px;
+  color: aliceblue;
+}
+.filter-button {
+  position: relative;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  font-size: 17.5px;
+  color: aliceblue;
+  overflow: hidden;
+  font-family: "Oswald", sans-serif; /* Ensures the animation stays within the button */
+}
+
+.filter-button:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px; /* Adjust thickness of the underline */
+  background-color: gray; /* Adjust color of the underline */
+  animation: underlineAnimation 0.3s forwards; /* Animation duration */
+}
+
+@keyframes underlineAnimation {
+  from {
+    width: 0;
+    left: 50%; /* Start from the center */
+    transform: translateX(-50%);
+  }
+  to {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+}
+
+
+body {
+  min-height: 100vh; /* Set a minimum height to ensure the footer is within the viewport */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+#filter{
+  display: block;
+  margin-bottom: 10px;
+}
+
+
+

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+}
+
+.sidebar {
+    background-color: #2C3E50;
+    color: #ECF0F1;
+    width: 250px;
+    height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar h1 {
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 24px;
+}
+
+.sidebar a {
+    color: #ECF0F1;
+    text-decoration: none;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: left;
+    display: block;
+    transition: background 0.3s;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    background-color: #34495E;
+}
+
+#h111 {
+    text-align: center;
+    width: 100%;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section-header {
+    font-size: 28px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    color: #34495E;
+}
+
+.logout {
+    margin-top: auto;
+    padding: 20px 0;
+}
+
+.logout button {
+    background-color: #E74C3C;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+.logout button:hover {
+    background-color: #C0392B;
+}

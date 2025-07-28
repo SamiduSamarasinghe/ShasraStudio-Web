@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Shop Receipt</title>
+    <link rel="stylesheet" href="receiptstyle.css">
+</head>
+<body>
+    <div class="receipt">
+        <header>
+            <img src="sahasralogo.jpg" alt="Camera Shop Logo" class="logo">
+            <h1>Sahasra Studio</h1>
+            <p>
+                456/5B, "Sahasra Studio"<br>
+                Arangla, Malabe, Sri Lanka<br>
+                Contact-us: 0114 410 026<br>
+            </p>
+        </header>
+        <section class="details">
+            <div class="detail">
+                <strong>Date:</strong> <span id="date"></span>
+            </div>
+            <div class="detail">
+                <strong>Receipt ID:</strong> <span id="receipt-id"></span>
+            </div>
+            <div class="detail">
+                <strong>Customer:</strong> <span id="customer-name"></span>
+            </div>
+        </section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rent Item Name</th>
+                    <th>Quantity</th>
+                    <th>Sub Total</th>
+                </tr>
+            </thead>
+            <tbody id="order-items">
+                <!-- Order items will be dynamically inserted here -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" class="text-right"><strong>Total Amount</strong></td>
+                    <td id="total"></td>
+                </tr>
+            </tfoot>
+        </table>
+        <footer>
+            <p class="thank-you">Thank you for your purchase!</p>
+            <p>Visit us again at <a href="https://www.facebook.com/sahasrastudiolk/">Sahasra Studio</a></p>
+        </footer>
+    </div>
+
+    <script src="receipt.js"></script>
+</body>
+</html>

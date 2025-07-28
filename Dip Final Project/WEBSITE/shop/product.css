@@ -1,0 +1,280 @@
+@import url('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css');
+
+.rating i {
+    color: orangered;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: wheat;
+    transition: transform 0.5s ease;
+}
+header {
+    background-color: black;
+    height: 100px;
+}
+#g-nav1 {
+    text-align: center;
+}
+li {
+    display: inline-block;
+    padding: 15px 0;
+    position: relative;
+}
+#navA {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    display: inline-block;
+    padding: 15px 20px;
+    position: relative;
+}
+#navA:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: white;
+    transition: width 0.6s ease 0s, left 0.6s ease 0s;
+    width: 0;
+}
+#navA:hover:after {
+    width: 100%;
+    left: 0;
+}
+#g-hr1 {
+    border-color: red;
+    margin-top: 14px;
+}
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+.row1 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: white;
+}
+.btn {
+    display: inline-block;
+    background-color: orange;
+    color: white;
+    margin-left: 30px;
+    padding: 8px 30px;
+    margin: 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.btn:hover {
+    background: orangered;
+}
+.productCol {
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    background-color: wheat;
+    margin-left: 50px;
+}
+.col-2 {
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    transition: 0.5s;
+}
+.col-2 p {
+    font-size: 14px;
+}
+.col-2:hover {
+    background-color: #ddd;
+}
+.col-2 img {
+    width: 80%;
+}
+.description {
+    margin-top: 15px;
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 63%;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.description p {
+    width: 70%;
+    text-shadow: #ddd;
+}
+#image {
+    padding: 50px;
+    width: 100%;
+}
+#h-f1 {
+    text-align: center;
+    padding-top: 1px;
+    margin-left: -8px;
+    margin-right: -8px;
+    padding-bottom: 55px;
+    background-color: black;
+    margin-top: 100px;
+}
+#h-f1::before {
+    display: inline-block;
+    content: "";
+    border-top: 0.3rem solid black;
+    width: 4rem;
+    margin: 0 1rem;
+}
+#h-f1h3 {
+    font-family: "Oswald", sans-serif;
+    font-size: 25px;
+    color: aliceblue;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+#line {
+    margin-top: -25px;
+    border-style: inset;
+    border-width: 1px;
+    border-color: red;
+}
+#h-pre1 {
+    text-align: left;
+    font-size: 18px;
+    margin-left: -50px;
+    margin-top: -80px;
+    color: aliceblue;
+}
+#h-pre2 {
+    text-align: right;
+    font-size: 18px;
+    margin-right: 30px;
+    margin-top: -40px;
+    color: aliceblue;
+}
+.product-container {
+    margin-top: 80px;
+}
+.product-container .col-2 img {
+    padding: 10px 0;
+    transition: transform 0.5s ease;
+}
+.product-container .col-2 img:hover {
+    transform: scale(1.1);
+}
+.product-container .description h4 {
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+.product-container .description input {
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+.product-container .description .btnBuyCartItem {
+    display: inline-block;
+    background-color: #ff523b;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+.product-container .description .btnBuyCartItem:hover {
+    background-color: #ff6e5b;
+}
+.img-row {
+    display: flex;
+}
+.img-col {
+    flex-basis: 24%;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+#productdetails {
+    margin-top: 30px;
+}
+
+
+
+
+#footer {
+    background-color: black; /* Set the background color for the footer */
+    }
+    
+    /* Adjust other styles as needed */
+    #h-f1 {
+    text-align: center;
+    padding-top: 1px;
+    margin-left: -8px;
+    margin-right: -8px;
+    padding-bottom: 55px;
+    }
+    
+    #h-f1::before {
+    display: inline-block;
+    content: "";
+    border-top: 0.3rem solid black;
+    width: 4rem;
+    margin: 0 1rem;
+    }
+    
+    #h-f1h3 {
+    font-family: "Oswald", sans-serif;
+    font-size: 25px;
+    color: aliceblue;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    }
+    
+    #h-pre1 {
+    text-align: left;
+    font-size: 17px;
+    margin-left: -30px;
+    margin-top: -80px;
+    color: aliceblue;
+    }
+    .line {
+    border-style: inset;
+    border-width: 1px;
+    border-color: red;
+    }
+    
+    /* #h-hr2 {
+    border-color: red;
+    } */
+    
+    #h-pre2 {
+    text-align: right;
+    font-size: 20px;
+    margin-right: 30px;
+    margin-top: -40px;
+    color: aliceblue;
+    }
+    

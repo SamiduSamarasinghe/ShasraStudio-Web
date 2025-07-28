@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="employee.css">
+    <title>EmployeeHub</title>
+</head>
+<body onload="initializePage()">
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">EmployeeHub</span>
+        </a>
+        <ul class="side-menu top">
+            <li class="active">
+                <a href="#">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li id="photographer-section">
+                <a href="photography.html">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="text">Photographer</span>
+                </a>
+            </li>
+            <li id="framemaker-section">
+                <a href="framemaker.html">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="text">Frame Maker</span>
+                </a>
+            </li>
+            <li id="crewmember-section">
+                <a href="crewmember.html">
+                    <i class='bx bxs-user-circle'></i>
+                    <span class="text">Crew Member</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#">
+                    <i class='bx bxs-cog'></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="logout" onclick="logout()">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span id="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+            <a href="#" class="nav-link">Categories</a>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+            <a href="#" class="notification">
+                <i class='bx bxs-bell'></i>
+                <span class="num">8</span>
+            </a>
+            <a href="#" class="profile">
+                <img src="img/people.png">
+            </a>
+        </nav>
+
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Dashboard</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li><i class='bx bx-chevron-right'></i></li>
+                        <li>
+                            <a class="active" href="#">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="box-info">
+                <a href="#inventory">
+                    <li>
+                        <i class='bx bx-store-alt'></i>
+                        <span class="text">
+                            <h3>1020</h3>
+                            <p>View Inventory</p>
+                        </span>
+                    </li>
+                </a>
+                <a href="#task">
+                    <li>
+                        <i class='bx bx-task'></i>
+                        <span class="text">
+                            <h3>20</h3>
+                            <p>View Task</p>
+                        </span>
+                    </li>
+                </a>
+                <a href="#messageView">
+                    <li>
+                        <i class='bx bx-message-alt-detail'></i>
+                        <span class="text">
+                            <h3>15</h3>
+                            <p>View Message</p>
+                        </span>
+                    </li>
+                </a>
+            </ul>
+
+            <div class="table-data">
+                <div id="inventory">
+                    <div class="head">
+                        <h3>INVENTORY</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ITEM NO.</th>
+                                <th>NAME</th>
+                                <th>CATEGORY</th>
+                                <th>DESCRIPTION</th>
+                                <th>COST PER ITEM</th>
+                                <th>STOCK QUANTITY</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventory-body">
+                            <!-- Inventory data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="taskData">
+                <div id="task">
+                    <div class="head">
+                        <h3>TASKS</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody id="task-body">
+                            <!-- Task data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="messageNotify">
+                <div id="messageView">
+                    <div class="head">
+                        <h3>MESSAGES</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="4"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="message-body">
+                            <!-- Message data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <script src="employee.js"></script>
+    <script>
+        function initializePage() {
+            // Fetch employee occupation and initialize the page accordingly
+            fetch('session.php')
+                .then(response => response.json())
+                .then(data => {
+                    const occupation = data.occupation;
+                    if (occupation === 'Photographer') {
+                        document.getElementById('framemaker-section').style.display = 'none';
+                        document.getElementById('crewmember-section').style.display = 'none';
+                    } else if (occupation === 'Frame Maker') {
+                        document.getElementById('photographer-section').style.display = 'none';
+                        document.getElementById('crewmember-section').style.display = 'none';
+                    } else if (occupation === 'Crew Member') {
+                        document.getElementById('photographer-section').style.display = 'none';
+                        document.getElementById('framemaker-section').style.display = 'none';
+                    }
+                });
+
+            // Load inventory data
+            fetch('inventory.php')
+                .then(response => response.json())
+                .then(data => {
+                    const inventoryBody = document.getElementById('inventory-body');
+                    data.forEach(item => {
+                        const row = `<tr>
+                            <td>${item.id}</td>
+                            <td>${item.name}</td>
+                            <td>${item.category}</td>
+                            <td>${item.description}</td>
+                            <td>${item.price}</td>
+                            <td>${item.quantity}</td>
+                        </tr>`;
+                        inventoryBody.innerHTML += row;
+                    });
+                });
+
+            // Load task data
+            fetch('tasks.php')
+                .then(response => response.json())
+                .then(data => {
+                    const taskBody = document.getElementById('task-body');
+                    data.forEach(task => {
+                        const row = `<tr>
+                            <td>${task.subject}</td>
+                            <td>${task.description}</td>
+                        </tr>`;
+                        taskBody.innerHTML += row;
+                    });
+                });
+
+            // Load message data
+            fetch('messages.php')
+                .then(response => response.json())
+                .then(data => {
+                    const messageBody = document.getElementById('message-body');
+                    data.forEach(message => {
+                        const row = `<tr class="message-row">
+                            <td><i class='bx bxs-message-dots'></i>
+                                <span>New Message</span>
+                                <span>${message.subject}</span>
+                                <span>${message.description}</span>
+                                <span>Date: ${message.received_date}</span>
+                            </td>
+                        </tr>`;
+                        messageBody.innerHTML += row;
+                    });
+                });
+        }
+
+        function logout() {
+            // Here you can add your logout logic, e.g., clearing session storage, cookies, etc.
+            window.location.href = 'employeelogin.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookings Insight Report</title>
+    <link rel="stylesheet" href="bookings_report.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Bookings Insight Report</h1>
+    <div class="container">
+        <div class="metric">
+            <h2>Total Bookings per Month</h2>
+            <div class="table-view">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Total Bookings</th>
+                        </tr>
+                    </thead>
+                    <tbody id="totalBookingsPerMonthTable">
+                    </tbody>
+                </table>
+            </div>
+            <div class="graph-view">
+                <canvas id="totalBookingsPerMonthChart"></canvas>
+            </div>
+        </div>
+
+        <div class="metric">
+            <h2>Booking Types Variation Over Time</h2>
+            <div class="table-view">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Event Photography</th>
+                            <th>Identification Photography</th>
+                            <th>Studio & Outdoor Photography</th>
+                            <th>Wedding Photography</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingTypesVariationTable">
+                    </tbody>
+                </table>
+            </div>
+            <div class="graph-view">
+                <canvas id="bookingTypesVariationChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="bookings_report.js"></script>
+</body>
+</html>

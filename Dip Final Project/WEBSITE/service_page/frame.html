@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Frame & Sublimation Order</title>
+    <link rel="stylesheet" type="text/css" href="framestyle.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+<div id="divv1">
+    <header>
+        <div id="h-black">
+            <nav id="g-nav1">
+                <ul>
+                    <li><a href="../home/home_logged.html" id="navA">Home</a></li>
+                    <li><a href="../gallery/gallery.html" id="navA">Gallery</a></li>
+                    <li><a href="../shop/shop.html" id="navA">Shop</a></li>
+                    <li><a href="service.html" id="navA">Services</a></li>
+                    <li><a href="../about_us/about.html" id="navA">About Us</a></li>
+                    <li><a href="../contact/index.html" id="navA">Contact</a></li>
+                </ul>
+            </nav>
+            <hr id="g-hr1" />
+        </div>
+    </header>
+</div>
+<div id="help">
+    <p id="pp1">Frame & Sublimation Order</p>
+    <p id="pp2">
+        For Booking & Orders:<br>
+        0114 410 026<br>
+        sahasrastudio@gmail.com<br>
+        Monday-Sunday: 8.30AM - 8.00PM
+    </p>
+    <div id="form">
+        <h2>Place Order</h2>
+        <form id="order-form">
+            <label>Full Name:</label><input type="text" id="name" name="name" placeholder="Enter Your Full Name..." required><br><br><br>
+            <label>Service Type:</label>
+            <select class="select-container" id="service-type" name="service-type" required>
+                <option value="" disabled selected>Select Service Type</option>
+                <option value="frame">Frame</option>
+                <option value="sublimation">Sublimation</option>
+                <option value="both">Both</option>
+            </select>
+            <br>
+            <label>Frame No (if applicable):</label><input type="number" id="frame-number" name="frame-number" placeholder="Enter Frame Number..."><br>
+            <label>Sublimation No (if applicable):</label><input type="number" id="sublimation-number" name="sublimation-number" placeholder="Enter Sublimation Number..."><br>
+            <label>Quantity:</label><input type="number" id="quantity" name="quantity" placeholder="Enter Quantity..." required><br>
+            <label>Requested Date:</label><input type="date" id="requested-date" name="requested-date" placeholder="Enter Requested Date..." required><br>
+            <br><br><br><br>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+        <p id="error-message" style="color: rgb(245, 101, 101);"></p>
+    </div>
+</div><br><br><br><br><br><br><br><br><br><br><br>
+<footer id="h-f1">
+    <div class="boder-line">
+        <hr class="line" />
+    </div>
+    <h3 id="h-f1h3">Follow Us</h3>
+    <a href="https://www.facebook.com/sahasrastudiolk" target="_blank" class="fa fa-facebook"><img src="./fblogo.png" alt="fblogo" /></a>
+    <a href="https://www.instagram.com/sahasrastudiolk" class="fa fa-instagram" target="_blank"><img src="./iglogo.png" alt="iglogo" /></a>
+    <a href="#" class="fa fa-twitter" target="_blank"><img src="./twlogo.png" alt="twlogo" /></a>
+    <a href="#" class="fa fa-linkedin" target="_blank"><img src="./linklogo.png" alt="linklogo" /></a>
+    <pre id="h-pre1">Address: 456/5B, "Sahasra Studio" Arangla, Malabe, Sri Lanka</pre>
+    <pre id="h-pre2">Contact-us: 0114 410 026</pre>
+</footer>
+
+<script>
+    $(document).ready(function () {
+        $('#order-form').on('submit', function (e) {
+            e.preventDefault();
+            var name = $('#name').val();
+            var serviceType = $('#service-type').val();
+            var frameNumber = $('#frame-number').val();
+            var sublimationNumber = $('#sublimation-number').val();
+            var quantity = $('#quantity').val();
+            var requestedDate = $('#requested-date').val();
+            var errorMessage = $('#error-message');
+
+            $.ajax({
+                type: 'POST',
+                url: '../frame_sublimation.php',
+                data: {
+                    name: name,
+                    service_type: serviceType,
+                    frame_number: frameNumber,
+                    sublimation_number: sublimationNumber,
+                    quantity: quantity,
+                    requested_date: requestedDate
+                },
+                success: function (response) {
+                    if (response === 'Order placed successfully!') {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Order placed successfully!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: response,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

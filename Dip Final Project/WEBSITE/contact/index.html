@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Include SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+</head>
+<body>
+<header>
+    <div id="h-black">
+        <nav id="g-nav1">
+            <ul>
+                <li>
+                    <a href="../home/home_logged.html" id="navA">Home <span></span></a>
+                </li>
+                <li>
+                    <a href="../gallery/gallery.html" id="navA">Gallery <span></span></a>
+                </li>
+                <li><a href="../shop/shop.html" id="navA">Shop</a> <span></span></li>
+                <li><a href="../service_page/service.html" id="navA">Services</a> <span></span></li>
+                <li><a href="../about_us/about.html" id="navA">About Us</a> <span></span></li>
+                <li><a href="index.html" id="navA">Contact</a> <span></span></li>
+            </ul>
+        </nav>
+        <hr id="g-hr1" />
+    </div>
+</header>
+<div id="help">
+    <p id="pp1"> How Can We Help?</p>
+    <p id="pp2"> Give us a call: 0114 410 026 <br>
+        Send us a mail: sahasrastudio@gmail.com <br>
+        Monday-Sunday: 8.30AM - 8.00PM   </p>
+    <div id="form">
+        <h2>Contact Us</h2>
+        <form id="contactForm" action="contact_us.php" method="POST">
+            <input type="text" name="first_name" placeholder="Enter Your First Name..." required><br>
+            <input type="text" name="last_name" placeholder="Enter your Last Name..." required><br>
+            <input type="text" name="address" placeholder="Enter Your Address..." required><br>
+            <input type="email" name="email" placeholder="Enter Your Email..." required><br>
+            <input type="text" name="contact_no" placeholder="Enter Your Contact No..." required><br><br>
+            <label for="inquiry"> Inquiry:</label>
+            <pre>
+          <textarea name="inquiry" cols="70" rows="10" placeholder="Type here..." required></textarea>
+          </pre>
+            <button type="submit" class="submit_button">Submit</button>
+            <button type="reset" class="submit_button">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<footer id="h-f1">
+    <div class="boder-line">
+        <hr class="line" />
+    </div>
+    <h3 id="h-f1h3">Follow Us</h3>
+    <a href="https://www.facebook.com/sahasrastudiolk" target="_blank" class="fa fa-facebook"><img src="./fblogo.png" alt="fblogo"></a>
+    <a href="https://www.instagram.com/sahasrastudiolk" class="fa fa-instagram" target="_blank"><img src="./iglogo.png" alt="iglogo"></a>
+    <a href="#" class="fa fa-twitter" target="_blank"><img src="./twlogo.png" alt="twlogo"></a>
+    <a href="#" class="fa fa-linkedin" target="_blank"><img src="./linklogo.png" alt="linklogo"></a>
+    <pre id="h-pre1">Address : 456/5B, "Sahasra Studio" Arangla,Malabe, Sri Lanka</pre>
+    <pre id="h-pre2">Contact-us : 0114 410 026</pre>
+</footer>
+
+<!-- Include SweetAlert JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    // Function to show SweetAlert success message
+    function showSuccessMessage() {
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Inquiry submitted successfully.',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "index.html";
+            }
+        });
+    }
+
+    // Function to show SweetAlert error message
+    function showErrorMessage(errorMessage) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: errorMessage,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Do nothing or handle as per your requirement
+            }
+        });
+    }
+
+    // Submit form using AJAX
+    document.getElementById("contactForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        var form = event.target;
+        var formData = new FormData(form);
+
+        // Send form data using AJAX
+        fetch(form.action, {
+            method: form.method,
+            body: formData
+        })
+            .then(response => response.text())
+            .then(result => {
+                if (result.trim() === "Inquiry submitted successfully.") {
+                    showSuccessMessage();
+                    form.reset(); // Clear form on success
+                } else {
+                    showErrorMessage(result);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showErrorMessage("Failed to submit inquiry. Please try again.");
+            });
+    });
+</script>
+</body>
+</html>

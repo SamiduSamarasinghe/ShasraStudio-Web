@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings History</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            display: flex;
+        }
+        .sidebar {
+            background-color: #2C3E50;
+            color: #ECF0F1;
+            width: 250px;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar h1 {
+            margin-bottom: 30px;
+        }
+        .sidebar a {
+            color: #ECF0F1;
+            text-decoration: none;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: left;
+            display: block;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+        .sidebar a:hover {
+            background-color: #34495E;
+        }
+        #h111 {
+            text-align: center;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .section-header {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #34495E;
+            text-align: center;
+            padding: 20px;
+        }
+        .order-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .order-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .order-header h3 {
+            margin: 0;
+            font-size: 22px;
+            color: #34495E;
+        }
+        .order-header .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .status-completed {
+            background-color: #27ae60;
+        }
+        .order-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .order-details div {
+            flex: 1;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .order-details div:hover {
+            background-color: #e1e1e1;
+        }
+        .order-details div i {
+            margin-right: 5px;
+        }
+        .logout {
+            margin-top: auto;
+            padding: 20px 0;
+        }
+        .logout button {
+            background-color: #E74C3C;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 95px;
+        }
+        .logout button:hover {
+            background-color: #C0392B;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1><i>Dashboard</i></h1>
+        <div id="h111">
+            <a href="profile.html">Orders</a>
+            <a href="profile.html">Bookings</a>
+            <a href="profile.html">Profile</a>
+            <a href="profile.html">Inquiries</a>
+            <a href="profile.html">Rents</a>
+            <a href="profile.html">Estimates</a>
+        </div>
+        <div class="logout">
+            <button onclick="logout()">Log Out</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <h2 class="section-header"><i>Bookings History</i></h2>
+            <div id="bookings-history-container">
+                <!-- Booking history cards will be appended here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = 'home.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('get_bookings_history.php')
+                .then(response => response.json())
+                .then(data => {
+                    const bookingsContainer = document.getElementById('bookings-history-container');
+                    data.forEach(booking => {
+                        const bookingCard = document.createElement('div');
+                        bookingCard.className = 'order-card';
+                        if (booking.booking_type === 'Identification Photography') {
+                            bookingCard.innerHTML = `
+                                <div class="order-header">
+                                    <h3>${booking.booking_type}</h3>
+                                    <h3>Booking ID: ${booking.booking_id}</h3>
+                                    <span class="status status-completed">Completed</span>                                   
+                                </div>
+                                <div class="order-details">
+                                    <div><i class="fas fa-user"></i> Name: ${booking.full_name}</div>
+                                    <div><i class="fas fa-camera"></i> Photo Type: ${booking.photo_type}</div>
+                                    <div><i class="fas fa-reply"></i> Reply: Yes</div>
+                                    <div><i class="fas fa-calendar-alt"></i> Date: ${booking.booking_datetime}</div>
+                                </div>
+                            `;
+                        } else {
+                            bookingCard.innerHTML = `
+                                <div class="order-header">
+                                    <h3>${booking.booking_type}</h3>
+                                    <h3>Booking ID: ${booking.booking_id}</h3>
+                                    <span class="status status-completed">Completed</span>
+                                </div>
+                                <div class="order-details">
+                                    <div><i class="fas fa-user"></i> Name: ${booking.full_name}</div>
+                                    <div><i class="fas fa-calendar-alt"></i> Event: ${booking.event_type}</div>
+                                    <div><i class="fas fa-reply"></i> Reply: Yes</div>
+                                    <div><i class="fas fa-calendar-alt"></i> Date: ${booking.event_datetime}</div>
+                                </div>
+                            `;
+                        }
+                        bookingsContainer.appendChild(bookingCard);
+                    });
+                })
+                .catch(error => console.error('Error fetching bookings history:', error));
+        });
+    </script>
+</body>
+</html>

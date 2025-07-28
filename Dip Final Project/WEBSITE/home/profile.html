@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+        }
+        .sidebar {
+            background-color: #2C3E50;
+            color: #ECF0F1;
+            width: 250px;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar h1 {
+            margin-bottom: 30px;
+        }
+        .sidebar a {
+            color: #ECF0F1;
+            text-decoration: none;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: left;
+            display: block;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+        .sidebar a:hover {
+            background-color: #34495E;
+        }
+
+        #h111{
+            text-align: center;
+            text-decoration: none;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            flex: 1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            
+            
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-header {
+            font-size: 28px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            color: #34495E;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            text-decoration: none;
+           
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #2C3E50;
+            text-decoration: none;
+            
+        }
+        .card p {
+            color: #0a0f0f;
+            text-decoration: none;
+        }
+        .logout {
+            margin-top: auto;
+            padding: 20px 0;
+        }
+        .logout button {
+            background-color: #E74C3C;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 95px;
+        }
+        .logout button:hover {
+            background-color: #C0392B;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1><I>Dashboard</I></h1>
+    <div id="h111">
+        <a href="#orders">Orders</a>
+        <a href="#bookings">Bookings</a>
+        <a href="#profile">Profile</a>
+        <a href="#inquiries">Inquiries</a>
+        <a href="#rents">Rents</a>
+        
+        <a href="#estimates">Estimates</a>
+    </div>
+        <div class="logout">
+            <button onclick="logout()" class="logout">Log Out</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <section id="orders" class="section">
+                <h2 class="section-header">Orders</h2>
+                <div class="grid-container">
+                   <a href="orders.html"><div class="card">
+                        <h2>Orders</h2>
+                        <p>Details about Orders</p>
+                    </div></a>
+                    <a href="orderhistory.html"> <div class="card">
+                        <h2>Order History</h2>
+                        <p>Details about History</p>
+                    </div></a>
+                </div>
+            </section>
+            <section id="bookings" class="section">
+                <h2 class="section-header">Bookings</h2>
+                <div class="grid-container">
+                    <a href="bookings.html"> <div class="card">
+                        <h2>Bookings</h2>
+                        <p>Details about Booking </p>
+                    </div></a>
+                    <a href="bookingshistory.html"> <div class="card">
+                        <h2>Bookings History</h2>
+                        <p>Details about Bookings History</p>
+                    </div></a>
+                </div>
+            </section>
+            <section id="profile" class="section">
+                <h2 class="section-header">Profile</h2>
+                <div class="grid-container">
+                    <a href="pprofile.html"><div class="card">
+                        <h2>Profile </h2>
+                        <p>View and edit your profile</p>
+                    </div></a>
+                </div>
+            </section>
+            <section id="inquiries" class="section">
+                <h2 class="section-header">Inquiries</h2>
+                <div class="grid-container">
+                    <a href="inquiries.html"><div class="card">
+                        <h2>Inquiries</h2>
+                        <p>Details about Inquiries</p>
+                    </div></a>
+                    <a href="inquiryhistory.html"> <div class="card">
+                        <h2>Inquiry History</h2>
+                        <p>Details about Inquiry History </p>
+                    </div></a>
+                </div>
+            </section>
+            <section id="rents" class="section">
+                <h2 class="section-header">Rents</h2>
+                <div class="grid-container">
+                    <a href="prent.html"> <div class="card">
+                        <h2>Rents</h2>
+                        <p>Details about Rents</p>
+                    </div></a>
+                    <a href="prenthistory.html">  <div class="card">
+                        <h2>Rent History</h2>
+                        <p>Details about Rent History</p>
+                    </div></a>
+                </div>
+            </section>
+           
+            <section id="estimates" class="section">
+                <h2 class="section-header">Estimates</h2>
+                <div class="grid-container">
+                    <a href="pestimate.html"> <div class="card">
+                        <h2>Estimates</h2>
+                        <p>Details about Your requested Estimates</p>
+                    </div></a>
+                    <a href="pestimatehistory.html"><div class="card">
+                        <h2>Estimate History</h2>
+                        <p>Details about Estimate History</p>
+                    </div></a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+</html>

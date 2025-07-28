@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Estimate Bill</title>
+        <link rel="stylesheet" type="text/css" href="estimatestyle.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    </head>
+    <body>
+        <div id="divv1">
+            <header>
+                <div id="h-black">
+                    <nav id="g-nav1">
+                        <ul>
+                            <li><a href="../home/home_logged.html" id="navA">Home</a></li>
+                            <li><a href="../gallery/gallery.html" id="navA">Gallery</a></li>
+                            <li><a href="../shop/shop.html" id="navA">Shop</a></li>
+                            <li><a href="service.html" id="navA">Services</a></li>
+                            <li><a href="../about_us/about.html" id="navA">About Us</a></li>
+                            <li><a href="../contact/index.html" id="navA">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <hr id="g-hr1" />
+                </div>
+            </header>
+        </div>
+        <div id="help">
+            <p id="pp1">Estimate Bill</p>
+            <p id="pp2">
+                For Booking & Orders:<br>
+                0114 410 026<br>
+                sahasrastudio@gmail.com<br>
+                Monday-Sunday: 8.30AM - 8.00PM
+            </p>
+            <div id="form">
+                <h2>Request Estimate</h2>
+                <form id="estimate-form">
+                    <label>Full Name:</label><input type="text" id="name" name="name" placeholder="Enter Your Full Name..." required><br>
+                    <label>Event Type:</label><input type="text" id="event" name="event" placeholder="What Is The Event?" required><br>
+                    <label>Location:</label><input type="text" id="location" name="location" placeholder="Location?" required><br>
+                    <label>Crowd Quantity:</label><input type="number" id="crowd" name="crowd" placeholder="What Is The Crowd Quantity?" required><br><br><br>
+                    <label>Photography Type:</label>
+                    <select class="select-container" id="photography-type" name="photography-type" required>
+                        <option value="" disabled selected>Select Photography Type</option>
+                        <option value="photo">Photo</option>
+                        <option value="video">Video</option>
+                        <option value="both">Both</option>
+                    </select><br>
+                    <label>Expected Cost:</label><input type="number" id="cost" name="cost" placeholder="Enter Your Expected Cost..." required><br><br><br>
+                    <label for="inquiry">About This Event:</label>
+                    <pre>
+                        <textarea id="about" name="about" cols="80" rows="10" placeholder="Type Here..." required></textarea>
+                    </pre>
+                    <br><br><br>
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </form>
+                <p id="error-message" style="color: rgb(245, 101, 101);"></p>
+            </div>
+        </div><br><br><br><br><br><br><br><br><br><br><br>
+        <footer id="h-f1">
+            <div class="boder-line">
+                <hr class="line" />
+            </div>
+            <h3 id="h-f1h3">Follow Us</h3>
+            <a href="https://www.facebook.com/sahasrastudiolk" target="_blank" class="fa fa-facebook"><img src="./fblogo.png" alt="fblogo" /></a>
+            <a href="https://www.instagram.com/sahasrastudiolk" class="fa fa-instagram" target="_blank"><img src="./iglogo.png" alt="iglogo" /></a>
+            <a href="#" class="fa fa-twitter" target="_blank"><img src="./twlogo.png" alt="twlogo" /></a>
+            <a href="#" class="fa fa-linkedin" target="_blank"><img src="./linklogo.png" alt="linklogo" /></a>
+            <pre id="h-pre1">Address: 456/5B, "Sahasra Studio" Arangla, Malabe, Sri Lanka</pre>
+            <pre id="h-pre2">Contact-us: 0114 410 026</pre>
+        </footer>
+
+        <script>
+            $(document).ready(function () {
+                $('#estimate-form').on('submit', function (e) {
+                    e.preventDefault();
+                    var name = $('#name').val();
+                    var event = $('#event').val();
+                    var location = $('#location').val();
+                    var crowd = $('#crowd').val();
+                    var photographyType = $('#photography-type').val();
+                    var cost = $('#cost').val();
+                    var about = $('#about').val();
+                    var errorMessage = $('#error-message');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '../estimate_bill.php',
+                        data: {
+                            name: name,
+                            event: event,
+                            location: location,
+                            crowd: crowd,
+                            photography_type: photographyType,
+                            cost: cost,
+                            about: about
+                        },
+                        success: function (response) {
+                            if (response === 'Estimate request submitted successfully!') {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Estimate request submitted successfully!',
+                                    icon: 'success',
+                                    confirmButtonText: 'OK'
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: response,
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                });
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

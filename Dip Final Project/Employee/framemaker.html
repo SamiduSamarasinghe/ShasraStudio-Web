@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frame Maker Dashboard</title>
+    <link rel="stylesheet" href="photography.css" />
+    <link rel="stylesheet" href="employee.css" />
+
+    <!-- Fontawesome CDN Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+  </head>
+  <body>
+    <nav class="sidebar">
+      <a href="#" class="logo">Sahasra Studio</a>
+      <div class="menu-content">
+        <ul class="menu-items">
+          <div class="menu-title">Frame Maker</div>
+          <li class="item">
+            <div class="submenu-item">
+              <span>Salary</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <ul class="menu-items submenu">
+              <div class="menu-title">
+                <i class="fa-solid fa-chevron-left"></i>
+                Salary
+              </div>
+              <li class="item"><a href="#checkSalary">Check Salary</a></li>
+              <li class="item">
+                <a href="#viewSalarySheet">View Salary Sheet</a>
+              </li>
+            </ul>
+          </li>
+          <li class="item">
+            <div class="submenu-item">
+              <span>Leave</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <ul class="menu-items submenu">
+              <div class="menu-title">
+                <i class="fa-solid fa-chevron-left"></i>
+                Leave
+              </div>
+              <li class="item"><a href="#Employee-Leaves">Apply Leave</a></li>
+              <li class="item">
+                <a href="#leaveHistory">Check Leave History</a>
+              </li>
+            </ul>
+          </li>
+          <li class="item">
+            <div class="submenu-item">
+              <span>Frames</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+            <ul class="menu-items submenu">
+              <div class="menu-title">
+                <i class="fa-solid fa-chevron-left"></i>
+                 Frames
+              </div>
+              <li class="item"><a href="#add-item">Add Frames</a></li>
+              <li class="item">
+                <a href="#delete-item">Delete Frames</a>
+              </li>
+            </ul>
+          </li>
+          <li class="item"><a href="#markAttendance">Mark Attendance</a></li>          
+        </ul>
+      </div>
+    </nav>
+
+    <nav class="navbar">
+      <i class="fa-solid fa-bars" id="sidebar-close"></i>
+      <li>
+        <a class="active" href="employee.html">Home</a>
+      </li>
+
+    </nav>
+
+    <main class="main">
+      <div id="delete-item" class="content table-container">
+        <h2>Delete Item</h2>
+        <br />
+        <label class="emhistory"><b>Choose Item</b></label>
+        <select required>
+          <option disabled selected>Choose Item</option>
+          <option>Single frame</option>
+          <option>Double frame</option>
+          <option>Wide frame</option>
+        </select>
+        <div>
+          <span class="overlay"></span>
+        </div>
+
+        <br />
+        <table class="application-list">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Item Name</th>
+              <th>Item ID</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Single frame</td>
+              <td>123</td>
+              <td>200</td>
+              <td>10</td>
+              <td>
+                <button type="submit" class="paybutton1" id="deleteItemButton">Delete</button>              
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="add-item" class="content">
+        <div class="wrapper">
+          <header>Add New Frames</header>
+          <form action="#">
+            <div class="dbl-field">
+              <div class="input-field">
+                <label>Item Name</label>
+                <input type="text" name="name" placeholder="Enter item name" />
+                <br>
+                <label>Item Price</label>
+                <input
+                  type="text"
+                  name="price"
+                  placeholder="Enter item price"
+                />
+
+                <label>Item Quantity</label>
+                <input
+                  type="text"
+                  name="quantity"
+                  placeholder="Enter item quantity"
+                />
+              </div>
+            </div>
+
+            <div class="message">
+              <textarea
+                placeholder="Write your description"
+                name="message"
+              ></textarea>
+            </div>
+            <label>Add a frames</label>
+            <input type="file" id="myFile" name="filename" />
+            <div class="button-area">
+              <button type="submit" class="paybutton1" id="addItemButton">Add item</button>
+              <span></span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="markAttendance" class="content table-container">
+        <h2 class="mH2">Attendance sheet</h2>
+        <br />
+        <label><b>Employee Name: Ranil</b></label><br>
+        <label><b>Designation: Photographer</b></label><br>
+        <label><b>Month & Year: 06/2024</b></label><br>
+
+        <table class="application-list">
+          <br>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Time in</th>
+              <th>Time out</th>
+              <th>Remark</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            </tbody>
+            </table>
+      </div>
+
+      <div id="Employee-Leaves" class="content table-container">
+        <h2 class="mH2">Apply Leaves</h2>
+        <br />
+        <table class="application-list">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Date from</th>
+              <th>Date to</th>
+              <th>Duration</th>
+              <th>Reason</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>20/06/2024</td>
+              <td>18/0/2024</td>
+              <td>2-days </td>
+              <td>Sick</td>
+              <td><button class="paybutton1">Apply</button></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="leaveHistory" class="content table-container">
+        <h2 class="mH2"> Leave History</h2>
+        <br />
+        <table class="application-list">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Date From</th>
+              <th>Date To</th>
+              <th> Duration</th>
+              <th>Reason</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>20/05/2024</td>
+              <td>22/05/2024</td>
+              <td>2-Days</td>
+              <td>Sick</td>
+              <td><span class="statusOk">Applied</span> </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>09/05/2024</td>
+              <td>08/05/2024</td>
+              <td>1-Day</td>
+              <td>Other</td>
+              <td><span class="statusNo">Cancelled</span> </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>18/04/2024</td>
+              <td>23/05/2024</td>
+              <td>5-Days</td>
+              <td>Back to hometown</td>
+              <td><span class="statusOk">Applied</span> </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>20/05/2024</td>
+              <td>22/05/2024</td>
+              <td>2-Days</td>
+              <td>Sick</td>
+              <td><span class="statusOk">Applied</span> </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>20/05/2024</td>
+              <td>22/05/2024</td>
+              <td>2-Days</td>
+              <td>Sick</td>
+              <td><span class="statusOk">Applied</span> </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>20/05/2024</td>
+              <td>22/05/2024</td>
+              <td>2-Days</td>
+              <td>Sick</td>
+              <td><span class="statusOk">Applied</span> </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+      <div id="checkSalary" class="content table-container">
+        <h2 class="mH2">Check Salary</h2>
+        <br />
+        <table class="application-list">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>Date</th>
+              <th>Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>Photographer</td>
+              <td>2023-06-25</td>
+              <td>71,300</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>Photographer</td>
+              <td>2023-05-25</td>
+              <td>69,500</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>Photographer</td>
+              <td>2023-04-25</td>
+              <td>74,300</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>Photographer</td>
+              <td>2023-03-25</td>
+              <td>72,800</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      </div>
+      <div id="viewSalarySheet" class="content table-container">
+        <h2 class="mH2">Salary Sheet</h2>
+        <br />
+        <label><b>Employee Name: Ranil</b></label><br>
+        <label><b>Designation: Photographer</b></label><br>
+        <label><b>Month & Year: 06/2024</b></label><br>
+
+        <table class="application-list">
+          <br>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>Earnings</th>
+              <th></th>
+              <th>Deductions</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>Photographer</td>
+              <td>Basic Salary</td>
+              <td>70,000</td>
+              <td>EPF</td>
+              <td>1,000</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Over time</td>
+              <td>3,500</td>
+              <td>ETF</td>
+              <td>1,000</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Daily Coming</td>
+              <td>-</td>
+              <td>Nopay</td>
+              <td>200</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Loan</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Total Addition</td>
+              <td>73,500</td>
+              <td>Total Deduction</td>
+              <td>2,200</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <th>Net Salary</th>
+              <th>71,300</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="markAttendance" class="content table-container">
+        <h2 class="mH2">Attendance sheet</h2>
+        <br />
+        <label><b>Employee Name: Ranil</b></label><br>
+        <label><b>Designation: Photographer</b></label><br>
+        <label><b>Month & Year: 06/2024</b></label><br>
+
+        <table class="application-list">
+          <br>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Time in</th>
+              <th>Time out</th>
+              <th>Remark</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Ranil</td>
+              <td>01/06/2024</td>
+              <td>8.30 am</td>
+              <td>5.30 pm</td>
+              <td><button class="paybutton1">Mark</button></td>
+            </tr>
+            </tbody>
+            </table>
+      </div>
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="photography.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+    const addItemButton = document.getElementById('addItemButton');
+
+    addItemButton.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent the default form submission
+        swal("Completed", "Add frames successfully", "success");
+    });
+});
+      </script>  
+      <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const deleteItemButton = document.getElementById('deleteItemButton');
+          
+          deleteItemButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            swal({
+              title: "Are you sure?",
+              text: "Once deleted, you will not be able to recover this file",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((willDelete) => {
+              if(willDelete){
+                swal("Poof! Your file has been deleted!",{
+                  icon:"success",
+                });
+              }else {
+                swal("Your file is safe!");
+              }
+            });
+          });
+        });
+      </script>
+</body>
+</html>

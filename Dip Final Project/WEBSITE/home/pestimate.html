@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Estimates</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+        }
+        .sidebar {
+            background-color: #2C3E50;
+            color: #ECF0F1;
+            width: 250px;
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar h1 {
+            margin-bottom: 30px;
+        }
+        .sidebar a {
+            color: #ECF0F1;
+            text-decoration: none;
+            padding: 15px 20px;
+            width: 100%;
+            text-align: left;
+            display: block;
+            transition: background 0.3s;
+            font-size: 18px;
+        }
+        .sidebar a:hover {
+            background-color: #34495E;
+        }
+        #h111 {
+            text-align: center;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            flex: 1;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .section-header {
+            font-size: 28px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            color: #34495E;
+        }
+        .orders-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .order-card {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: #2C3E50;
+            box-sizing: border-box;
+        }
+        .order-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .order-header {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .order-details {
+            color: #34495E;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .order-status {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #E74C3C;
+            color: #fff;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .logout {
+            margin-top: auto;
+            padding: 20px 0;
+        }
+        .logout button {
+            background-color: #E74C3C;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-bottom: 95px;
+        }
+        .logout button:hover {
+            background-color: #C0392B;
+        }
+
+        .active-menu {
+            background-color: #4CAF50;
+            color: white; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1><i>Dashboard</i></h1>
+        <div id="h111">
+            <a href="profile.html">Orders</a>
+            <a href="profile.html">Bookings</a>
+            <a href="profile.html">Profile</a>
+            <a href="profile.html">Inquiries</a>
+            <a href="profile.html">Rents</a>
+            <a href="profile.html" class="active-menu">Estimates</a>
+        </div>
+        <div class="logout">
+            <button onclick="logout()">Log Out</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <h2 class="section-header"><i>Pending Estimates</i></h2>
+        <div class="container orders-container">
+            <!-- Estimates cards will be appended here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = 'home.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('get_estimates.php')
+                .then(response => response.json())
+                .then(data => {
+                    const estimatesContainer = document.querySelector('.orders-container');
+                    data.forEach(estimate => {
+                        const estimateCard = document.createElement('div');
+                        estimateCard.className = 'order-card';
+                        estimateCard.innerHTML = `
+                            <div class="order-header">Estimate Bill ID: ${estimate.id}</div>
+                            <div class="order-details">
+                                Customer Name: ${estimate.full_name}<br>
+                                Event: ${estimate.event_type}<br>
+                                Photography Type: ${estimate.photography_type}<br>
+                                Expected Cost: ${estimate.expected_cost}<br>
+                                <span class="order-status">${estimate.status}</span>
+                            </div>
+                        `;
+                        estimatesContainer.appendChild(estimateCard);
+                    });
+                })
+                .catch(error => console.error('Error fetching estimates:', error));
+        });
+    </script>
+</body>
+</html>

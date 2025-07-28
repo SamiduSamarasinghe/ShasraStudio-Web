@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders and Rents Insight Report</title>
+    <link rel="stylesheet" href="orders_rents_report.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Orders and Rents Insight Report</h1>
+    <div class="container">
+        <div class="metric">
+            <h2>Total Orders and Rents per Month</h2>
+            <div class="table-view">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Total Orders</th>
+                            <th>Total Rents</th>
+                        </tr>
+                    </thead>
+                    <tbody id="totalOrdersRentsPerMonthTable">
+                    </tbody>
+                </table>
+            </div>
+            <div class="graph-view">
+                <canvas id="totalOrdersRentsPerMonthChart"></canvas>
+            </div>
+        </div>
+
+        <div class="metric">
+            <h2>Orders and Rents by City</h2>
+            <div class="table-view">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>City</th>
+                            <th>Total Orders</th>
+                            <th>Total Rents</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cityDistributionTable">
+                    </tbody>
+                </table>
+            </div>
+            <div class="graph-view">
+                <canvas id="cityDistributionChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="orders_rents_report.js"></script>
+</body>
+</html>

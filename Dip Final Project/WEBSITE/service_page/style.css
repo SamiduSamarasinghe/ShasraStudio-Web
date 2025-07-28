@@ -1,0 +1,193 @@
+#g-nav1 {
+    text-align: center; /* Center align the navigation items */
+    }
+    
+    li {
+    display: inline-block; /* Change display to inline-block */
+    padding: 15px 0;
+    position: relative;
+    }
+    
+    #navA {
+    color: #fff; /* navigation bar */
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    display: inline-block;
+    padding: 15px 20px;
+    position: relative;
+    }
+    body {
+    background-color: black; /* change background colour to black */
+    }
+    #navA:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.6s ease 0s, left 0.6s ease 0s;
+    width: 0;
+    }
+    
+    #navA:hover:after {
+    width: 100%;
+    left: 0;
+    }
+    
+    @media screen and (max-height: 300px) {
+    ul {
+    margin-top: 40px;
+    }
+    }
+    #g-hr1 {
+        border-color: red;/* change hr colour to red  */
+      }
+    .a-h1{
+    text-align: center; /* modifying heading about us */
+    color:aliceblue;
+    font-size: 50px;
+    
+    }
+    
+    .a-p1{
+        color: #c0c0c0; /*  */
+        position: absolute;
+        text-align: left;
+        top: 300px;
+        left: 22px;
+        font-family: "arimo", sans-serif;
+        font-size: 17px;
+        font-optical-sizing: auto;
+    }
+    
+    #a-photo1{
+        width: 70vh;
+        text-align: right;
+        margin-left: 995px;
+        border-radius: 2.5%;
+    }
+    @keyframes floatAnimation {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+    
+    #a-photo1:hover,#a-photo2:hover,#a-photo3:hover {
+        animation-name: floatAnimation;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+    }
+    #a-photo2{
+        width: 70vh;
+        text-align: left;
+        margin-left: 22px;
+        border-radius: 2.5%;}
+
+   
+    .a-h2{
+        color: aliceblue;
+        position: absolute;
+        text-align: left;
+        top: 580px;
+        left: 650px;
+        font-size: 50px;
+    }   
+    .a-p2{
+            color: #c0c0c0;
+            position: absolute;
+            text-align: left;
+            top: 680px;
+            left: 540px;
+            font-family: "arimo", sans-serif;
+            font-size: 17px;
+    }
+    #a-photo3{
+        width: 70vh;
+        text-align: right;
+        margin-left: 995px;
+        border-radius: 2.5%;
+    }
+    .a-h3{
+        color: aliceblue;
+        position: absolute;
+        text-align: left;
+        top: 980px;
+        left: 650px;
+        font-size: 50px;
+    }
+    .a-p3{
+        color: #c0c0c0;
+        position: absolute;
+        text-align: left;
+        top: 1100px;
+        left: 22px;
+        font-family: "arimo", sans-serif;
+        font-size: 17px;
+        font-optical-sizing: auto;
+    }
+    
+    #footer {
+        background-color: black; /* Set the background color for the footer */
+        }
+        
+        /* Adjust other styles as needed */
+        #h-f1 {
+        text-align: center;
+        padding-top: 1px;
+        margin-left: -8px;
+        margin-right: -8px;
+        padding-bottom: 55px;
+        }
+        
+        #h-f1::before {
+        display: inline-block;
+        content: "";
+        border-top: 0.3rem solid black;
+        width: 4rem;
+        margin: 0 1rem;
+        }
+        
+        #h-f1h3 {
+        font-family: "Oswald", sans-serif;
+        font-size: 25px;
+        color: aliceblue;
+        margin-top: 15px;
+        margin-bottom: 25px;
+        }
+        
+        #h-pre1 {
+        text-align: left;
+        font-size: 19px;
+        margin-left: -120px;
+        margin-top: -80px;
+        color: aliceblue;
+        }
+        .line {
+        border-style: inset;
+        border-width: 1px;
+        border-color: red;
+        }
+        
+        /* #h-hr2 {
+        border-color: red;
+        } */
+        
+        #h-pre2 {
+        text-align: right;
+        font-size: 20px;
+        margin-right: 30px;
+        margin-top: -40px;
+        color: aliceblue;
+        }
+        
